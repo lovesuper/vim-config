@@ -16,7 +16,7 @@ set shiftwidth=4
 set expandtab
 " highlighting current line
 set cursorline
-
+set foldmethod=syntax
 " workaround for change current buffer
 map gn :bn<cr>
 map gp :bp<cr>
@@ -86,4 +86,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
 
+vnoremap <F9> zf
