@@ -1,4 +1,6 @@
 " set string numeration
+" set background=dark
+
 set nu
 " set syntax highlighting
 syntax on
@@ -56,10 +58,19 @@ Plugin 'scrooloose/syntastic'
 " nerd tree git supporting
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " python autocompletion
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
+" fuzzy files search
+Plugin 'kien/ctrlp.vim'
+" visual indentations
+" Plugin 'nathanaelkane/vim-indent-guides'
+" plugin for autocompletion
+Plugin 'Shougo/neocomplete.vim'
+" vim shell
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
-
+let g:neocomplcache_enable_at_startup = 1
 " Displaying status line always
 set laststatus=2
 
@@ -86,14 +97,18 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-augroup vimrc
-  au BufReadPre * setlocal foldmethod=indent
-  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-augroup END
+" augroup vimrc
+"   au BufReadPre * setlocal foldmethod=indent
+"   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+" augroup END
+"
 inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
-
 vnoremap <F9> zf
+
+" let g:indent_guides_auto_colors = 0
+" hi IndentGuidesOdd  ctermbg=black
+" hi IndentGuidesEven ctermbg=darkgrey
