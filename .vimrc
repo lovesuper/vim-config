@@ -112,3 +112,9 @@ vnoremap <F9> zf
 " let g:indent_guides_auto_colors = 0
 " hi IndentGuidesOdd  ctermbg=black
 " hi IndentGuidesEven ctermbg=darkgrey
+
+" auto exit from insert mode
+au CursorHoldI * stopinsert
+au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
+au InsertLeave * let &updatetime=updaterestore
+
