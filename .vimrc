@@ -36,6 +36,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 " setting vim runtime path
 call vundle#begin()
+" python ide
+Plugin 'klen/python-mode'
+Plugin 'xolox/vim-misc'
+
+" session management
+Plugin 'xolox/vim-session'
+
+" starting screen
+Plugin 'mhinz/vim-startify'
+
 Plugin 'gmarik/Vundle.vim'
 " git
 Plugin 'tpope/vim-fugitive'
