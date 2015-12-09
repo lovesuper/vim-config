@@ -37,7 +37,7 @@ filetype off                  " required
 " setting vim runtime path
 call vundle#begin()
 " python ide
-Plugin 'klen/python-mode'
+"Plugin 'klen/python-mode'
 Plugin 'xolox/vim-misc'
 
 " session management
@@ -112,13 +112,13 @@ let g:syntastic_check_on_wq = 0
 "   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 " augroup END
 "
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
-vnoremap <F9> zf
-
+"inoremap <F9> <C-O>za
+"nnoremap <F9> za
+"onoremap <F9> <C-C>za
+:"\<Space>")<CR>
+"vnoremap <Space> zf
+"vnoremap <F9> zf
+let NERDTreeIgnore = ['\.pyc$', '\.orig']
 " let g:indent_guides_auto_colors = 0
 " hi IndentGuidesOdd  ctermbg=black
 " hi IndentGuidesEven ctermbg=darkgrey
