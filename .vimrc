@@ -1,6 +1,6 @@
-" set string numeration
-" set background=dark
+set background=dark
 
+"set string numeration
 set nu
 " set syntax highlighting
 syntax on
@@ -20,6 +20,8 @@ set expandtab
 set cursorline
 set foldmethod=syntax
 " workaround for change current buffer
+" set highlighting search results
+set hlsearch
 map gn :bn<cr>
 map gp :bp<cr>
 
@@ -37,14 +39,15 @@ filetype off                  " required
 " setting vim runtime path
 call vundle#begin()
 " python ide
-"Plugin 'klen/python-mode'
-Plugin 'xolox/vim-misc'
+Plugin 'klen/python-mode'
 
+Plugin 'kylef/apiblueprint.vim'
 " session management
 Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
 
-" starting screen
-Plugin 'mhinz/vim-startify'
+" starting screen (does not work)
+"Plugin 'mhinz/vim-startify'
 
 Plugin 'gmarik/Vundle.vim'
 " git
@@ -127,4 +130,31 @@ let NERDTreeIgnore = ['\.pyc$', '\.orig']
 au CursorHoldI * stopinsert
 au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
 au InsertLeave * let &updatetime=updaterestore
-
+" Setting up Python Mode
+let g:pymode_paths = ["bin/py"]
+let g:pymode_options_max_line_length = 100
+let g:pymode_folding = 0
+" for vim session
+let g:session_autoload="no" 
+let g:session_directory = "~/develop/"
+function! Wipeout()
+    let l:buffers = range(1, bufnr('$'))
+    let l:currentTab = tabpagenr()
+        try
+            let l:tab = 0
+            while l:tab < tabpagenr('$')
+                let l:tab += 1
+                let l:win = 0
+                while l:win < winnr('$')
+                    let l:win += 1
+                    let l:thisbuf = winbufnr(l:win)
+                    call remove(l:buffers, index(l:buffers, l:thisbuf))
+                endwhile
+            endwhile
+            if len(l:buffers)
+                execute 'bwipeout' join(l:buffers)
+            endif
+        finally
+            execute 'tabnext' l:currentTab
+        endtry
+endfunction
