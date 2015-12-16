@@ -27,7 +27,8 @@ map gn :bn<cr>
 map gp :bp<cr>
 
 map gd :bd<cr> 
-
+" dismiss search results by C-l
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Work with system clipboard
 vnoremap <C-c> "*y 
@@ -39,9 +40,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 " setting vim runtime path
 call vundle#begin()
-" python ide
-Plugin 'klen/python-mode'
+
+"ultimate snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
 Plugin 'terryma/vim-multiple-cursors'
+
 Plugin 'kylef/apiblueprint.vim'
 " session management
 Plugin 'xolox/vim-session'
@@ -82,6 +87,9 @@ Plugin 'Shougo/neocomplete.vim'
 " vim shell
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
+" plugin for quick commentary
+Plugin 'scrooloose/nerdcommenter'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 let g:neocomplcache_enable_at_startup = 1
@@ -131,10 +139,13 @@ let NERDTreeIgnore = ['\.pyc$', '\.orig']
 au CursorHoldI * stopinsert
 au InsertEnter * let updaterestore=&updatetime | set updatetime=15000
 au InsertLeave * let &updatetime=updaterestore
+
 " Setting up Python Mode
 let g:pymode_paths = ["bin/py"]
 let g:pymode_options_max_line_length = 100
 let g:pymode_folding = 0
+let g:pymode_rope_lookup_project = 0
+
 " for vim session
 let g:session_autoload="no" 
 let g:session_directory = "~/develop/"
@@ -159,3 +170,13 @@ function! Wipeout()
             execute 'tabnext' l:currentTab
         endtry
 endfunction
+
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
