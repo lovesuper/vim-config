@@ -22,6 +22,7 @@ set foldmethod=syntax
 " workaround for change current buffer
 " set highlighting search results
 set hlsearch
+set nowrap
 map gn :bn<cr>
 map gp :bp<cr>
 
@@ -40,7 +41,7 @@ filetype off                  " required
 call vundle#begin()
 " python ide
 Plugin 'klen/python-mode'
-
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kylef/apiblueprint.vim'
 " session management
 Plugin 'xolox/vim-session'
