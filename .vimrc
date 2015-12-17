@@ -6,12 +6,15 @@ set nu
 syntax on
 " set color sheme
 colorscheme badwolf 
+set relativenumber
 " set default editor encoding
 set encoding=utf-8
 " for Vundle temporary disabling Vi compatibility
 set nocompatible              " be iMproved, required
 " default indentation
 set tabstop=4
+" live refreshing
+set autoread
 " default shifting
 set shiftwidth=4
 " converting tabs to spaces
@@ -44,7 +47,8 @@ call vundle#begin()
 "ultimate snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-
+" XCode
+Plugin 'toyamarinyon/vim-swift'
 Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'kylef/apiblueprint.vim'
