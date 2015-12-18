@@ -8,7 +8,7 @@ syntax on
 colorscheme badwolf 
 set relativenumber
 " set default editor encoding
-set encoding=utf-8
+set encoding=utf8
 " for Vundle temporary disabling Vi compatibility
 set nocompatible              " be iMproved, required
 " default indentation
@@ -56,6 +56,7 @@ Plugin 'kylef/apiblueprint.vim'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 
+Plugin 'ryanoasis/vim-devicons'
 " starting screen (does not work)
 "Plugin 'mhinz/vim-startify'
 
@@ -184,3 +185,4 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+let g:airline_powerline_fonts = 1
