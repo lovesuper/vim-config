@@ -2,6 +2,8 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 filetype off
 call vundle#begin()
+" Ember.js
+Plugin 'dsawardekar/ember.vim'
 
 Plugin 'gmarik/Vundle.vim'
 
@@ -36,7 +38,7 @@ Plugin 'jiangmiao/auto-pairs'
 " Surrounding selected text by any tag, quotes and etc
 Plugin 'tpope/vim-surround'
 
-" Make code commented 
+" Make code commented
 Plugin 'tomtom/tcomment_vim'
 
 " Any syntax supporting
@@ -62,29 +64,47 @@ filetype plugin indent on
 
 set nu
 syntax on
-colorscheme badwolf 
+colorscheme badwolf
+set listchars=tab:͢͢–,trail:•,extends:>,precedes:<,space:•
+set list
 set relativenumber
 set encoding=utf8
 " for Vundle temporary disabling Vi compatibility set nocompatible be iMproved, required
-set tabstop=4
+set tabstop=2
 " default shifting
-set shiftwidth=4
+set shiftwidth=2
 " converting tabs to spaces
 set expandtab
 " highlighting current line
 set cursorline
-set foldmethod=syntax
+"set foldmethod=syntax
 set hlsearch
 set nowrap
 " workaround for change current buffer
 map gn :bn<cr>
 map gp :bp<cr>
-map gd :bd<cr> 
+map gd :bd<cr>
+
+
+match ErrorMsg '\s\+$'
+nnoremap <Leader>rtw :%s/\s\+$//e<CR>
+
+" Removes trailing spaces
+function! TrimWhiteSpace()
+  %s/\s\+$//e
+endfunction
+
+nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+
+autocmd FileWritePre    * :call TrimWhiteSpace()
+autocmd FileAppendPre   * :call TrimWhiteSpace()
+autocmd FilterWritePre  * :call TrimWhiteSpace()
+autocmd BufWritePre     * :call TrimWhiteSpace()
 
 " dismiss search results by C-l
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 " Work with system clipboard
-vnoremap <C-c> "*y 
+vnoremap <C-c> "*y
 
 "let g:neocomplcache_enable_at_startup = 1
 " Displaying status line always
@@ -118,7 +138,7 @@ let g:syntastic_check_on_wq = 0
 "let g:pymode_rope_lookup_project = 0
 
 " For vim session
-let g:session_autoload="no" 
+let g:session_autoload="no"
 let g:session_directory = "~/develop/"
 function! Wipeout()
     let l:buffers = range(1, bufnr('$'))
@@ -149,3 +169,13 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" autotrim whitespaces
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
