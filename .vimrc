@@ -2,17 +2,11 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 filetype off
 call vundle#begin()
-" Ember.js
-Plugin 'dsawardekar/ember.vim'
-
 Plugin 'gmarik/Vundle.vim'
 
 " Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-
-" XCode
-Plugin 'toyamarinyon/vim-swift'
 
 " session management
 Plugin 'xolox/vim-session'
@@ -47,9 +41,6 @@ Plugin 'scrooloose/syntastic'
 " Nerd tree git supporting
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-" Python autocompletion
-Plugin 'klen/python-mode'
-
 " Fuzzy files search
 Plugin 'kien/ctrlp.vim'
 
@@ -65,9 +56,8 @@ filetype plugin indent on
 set nu
 syntax on
 colorscheme badwolf
-set listchars=tab:͢͢–,trail:•,extends:>,precedes:<,space:•
+" set listchars=tab:͢͢–,trail:•,extends:>,precedes:<,space:•
 set list
-set relativenumber
 set encoding=utf8
 " for Vundle temporary disabling Vi compatibility set nocompatible be iMproved, required
 set tabstop=2
@@ -84,7 +74,6 @@ set nowrap
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
-
 
 match ErrorMsg '\s\+$'
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
