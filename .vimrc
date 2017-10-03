@@ -50,12 +50,14 @@ Plugin 'Shougo/neocomplete.vim'
 " plugin for quick commentary
 Plugin 'scrooloose/nerdcommenter'
 
+Plugin 'vim-airline/vim-airline-themes'
+
 call vundle#end()
 filetype plugin indent on
 
 set nu
 syntax on
-colorscheme badwolf
+colorscheme thaumaturge
 " set listchars=tab:͢͢–,trail:•,extends:>,precedes:<,space:•
 set list
 set encoding=utf8
