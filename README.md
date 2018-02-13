@@ -1,4 +1,3 @@
 # vim-config
-this is my vim config
+This is not only a VIM config but other configs too.
 
-I keep this configuration for my children:)
