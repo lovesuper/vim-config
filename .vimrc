@@ -13,7 +13,6 @@ Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'kylef/apiblueprint.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 
